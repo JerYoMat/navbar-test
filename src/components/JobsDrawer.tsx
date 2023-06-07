@@ -29,11 +29,17 @@ function JobsDrawer({
   open: boolean;
   toggleDrawer: any;
 }) {
+  const handleKeyboardSelect = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      toggleDrawer("left", false);
+    }
+  };
 
   return (
     <div>
       <SwipeableDrawer
-        id='jobs-drawer'
+        id="jobs-drawer"
         hideBackdrop
         anchor={"left"}
         open={open}
@@ -63,6 +69,7 @@ function JobsDrawer({
               Demo Name
             </Typography>
             <IconButton
+              onKeyDown={handleKeyboardSelect}
               aria-label="Close the Jobs section"
             >
               <ChevronLeftIcon />
